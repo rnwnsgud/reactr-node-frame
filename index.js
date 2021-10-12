@@ -2,14 +2,14 @@ const express = require("express");
 const app = express();
 const port = 5000;
 
+const config = require("./config/key");
+
 const mongoose = require("mongoose");
 mongoose
-  .connect(
-    "mongodb+srv://junhyeong:kyjgshs9076@cluster0.ebxwb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-  )
+  .connect(config.mongoURI)
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
 
-app.get("/", (req, res) => res.send("hello world"));
+app.get("/", (req, res) => res.send("hellos world"));
 
 app.listen(port, () => console.log(`Exampe app listening on port ${port}!`));
